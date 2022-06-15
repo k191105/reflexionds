@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- https://memegen.link/ -->
+    <div class="header">
+        <h1 class="display-2"> Something went wrong... </h1>
+    </div>
+    <br><br>
+    <h5 class="text-decoration-underline">Error Description: </h5>
+    <p> {{ text }} </p>
+{% endblock %}

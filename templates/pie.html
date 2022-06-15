@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Line Graph
+{% endblock %}
+
+{% block main %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<canvas id="lineChart" width="900" height="400"></canvas>
+
+<script>
+    let ctx = document.getElementById("lineChart").getContext("2d")
+    let lineChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: {{ good_bad | safe }},
+            datasets: [
+                {
+                    data: {{ numbers | safe }},
+                    backgroundColor: ['rgba(54, 162, 235, 0.8)', 'rgba(255, 99, 132, 0.8)']
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+            xAxes: [{
+                ticks: {
+                    display: false //this will remove only the label
+                }
+            }]
+        }
+            }
+    });
+</script>
+{# <script>
+    var ctx2 = document.getElementById("lineChart").getContext("2d")
+    var lineChart2 = new Chart(ctx2, {
+        type: "bar",
+        data: {
+            labels: {{ for_bar | safe }},
+            datasets: [
+                {
+                    label: "My Rating",
+                    data: {{ frequency | safe }},
+                    fill: true,
+                    borderColor: "rgb(75, 192, 192)",
+                    lineTension: 0.1
+                }
+            ]
+        },
+        options: {
+            responsive: false,
+            scales: {
+            xAxes: [{
+                ticks: {
+                    display: false //this will remove only the label
+                }
+            }]
+        }
+            }
+    }); #}
+</script>
+
+
+{% endblock %}

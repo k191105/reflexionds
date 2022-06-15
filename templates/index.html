@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1 class="display-2"> Welcome! </h1>
+    </div>
+    <form action="/" method="post">
+        <h4 class="fw-light">Better understand yourself through reflection and analysis</h4>
+        <br><br>
+        <div class="mb-3">
+            <p class="fw-light">On a scale of 1 - 100, rate your day so far.</p>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="rating" name="rating" placeholder="Rating" type="number" max=100 required>
+        </div>
+        <div class="mb-3">
+            <p class="fw-light">Write a short reflection into your digital diary</p>
+            <textarea class="form-control mx-auto w-auto" id="reflection" name="reflection" placeholder="Reflection (Optional)" rows=5 type="text"></textarea>
+        </div>
+        <script>
+        function submitPoll(id){
+            document.getElementById("my-button").disabled = true;
+            setTimeout(function(){document.getElementById("my-button").disabled = false;},5000000);
+        }
+        </script>
+        <button id="my-button" class="btn btn-dark" type="submit">Submit</button>
+    </form>
+{% endblock %}

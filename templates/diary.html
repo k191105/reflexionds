@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Digital Diary
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Reflection</th>
+                <th class="text-start">Rating</th>
+                <th class="text-end">Time (GMT)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in history %}
+            <tr>
+                <td>{{ item["reflection"] }}</td>
+                <td>{{ item["rating"] }}</td>
+                <td>{{ item["time"] }} </td>
+            </tr>
+            {% endfor %}
+</table>
+
+<div class="mb-2">
+    <form action="/" method="get">
+        <button id="Add" class="btn btn-success" type="submit">Add</button>
+    </form>
+</div>
+
+<div class="mb-2">
+    <form action="/clear" method="post">
+        <button id="clear" class="btn btn-danger" type="submit">Clear</button>
+    </form>
+</div>
+
+
+{% endblock %}
